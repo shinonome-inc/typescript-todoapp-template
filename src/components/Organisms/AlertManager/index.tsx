@@ -3,10 +3,10 @@ import { useAlertHandlerContext } from "../../../contexts/alert_handler";
 import Alert from "../../Atoms/Alert";
 
 interface AlertHandlerContextType {
-  visible: boolean;
-  errorText: string;
+  visible: any;
+  errorText: any;
   closeAlert: () => void;
-}
+} /*any型*/
 
 const AlertManager = () => {
   const timeoutHandlerRef = useRef<number | null>(null);

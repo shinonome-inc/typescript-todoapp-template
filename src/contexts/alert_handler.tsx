@@ -1,12 +1,12 @@
 import React, { createContext, useContext, ReactNode, useState } from "react";
 
 interface AlertState {
-  visible: boolean;
-  errorText: string;
-}
+  visible: any;
+  errorText: any;
+} /*any型*/
 
 interface AlertHandlerContextType extends AlertState {
-  setAlert: (errorText: string) => void;
+  setAlert: (errorText: any) => void /*any型*/;
   closeAlert: () => void;
 }
 
@@ -26,7 +26,7 @@ export const AlertHandlerProvider = ({
     errorText: "",
   });
 
-  const setAlert = (errorText: string) => {
+  const setAlert = (errorText: any /*any型*/) => {
     setAlertState({
       visible: true,
       errorText: errorText,

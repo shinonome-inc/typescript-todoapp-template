@@ -15,9 +15,9 @@ interface AlertHandlerContextType {
 }
 
 const TodoCard = () => {
-  const [taskList, setTaskList] = useState([]);
-  const AlertHandlerContext = useAlertHandlerContext();
-
+  const [taskList, setTaskList] = useState<any[]>([]); //any型
+  const AlertHandlerContext =
+    useAlertHandlerContext() as AlertHandlerContextType;
   const onAddTaskButtonClick = () => {
     const newTask = {
       name: "",
@@ -26,12 +26,12 @@ const TodoCard = () => {
     setTaskList(taskList.concat(newTask));
   };
 
-  const onTaskComplete = index => {
+  const onTaskComplete = (index: any /*any型*/) => {
     let newTaskList = taskList.filter((_, idx) => idx != index);
     setTaskList(newTaskList);
   };
 
-  const onTaskNameChange = (value, index) => {
+  const onTaskNameChange = (value: any, index: any /*any型*/) => {
     let newTaskList = [...taskList];
     if (value === "") {
       newTaskList.splice(index, 1);
@@ -46,8 +46,9 @@ const TodoCard = () => {
   };
 
   useEffect(() => {
-    const currentTaskList = JSON.parse(localStorage.getItem("tasklist"));
-    if (currentTaskList === null) return;
+    const item = localStorage.getItem("tasklist");
+    if (item === null) return;
+    const currentTaskList = JSON.parse(item);
     setTaskList(currentTaskList);
   }, []);
 
