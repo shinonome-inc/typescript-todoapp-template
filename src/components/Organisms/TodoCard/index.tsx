@@ -6,9 +6,9 @@ import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
 
 interface TaskType {
-  name: string;
-  initializing: boolean;
-}
+  name: any;
+  initializing: any;
+} //any型
 
 interface AlertHandlerContextType {
   setAlert: (errorText: string) => void;
