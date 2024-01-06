@@ -6,16 +6,16 @@ import AddTaskButton from "../../Atoms/AddTaskButton";
 import Task from "../../Molecules/Task";
 
 interface TaskType {
-  name: any;
-  initializing: any;
-} //any型
+  name: string;
+  initializing: boolean;
+}
 
 interface AlertHandlerContextType {
   setAlert: (errorText: string) => void;
 }
 
 const TodoCard = () => {
-  const [taskList, setTaskList] = useState<any[]>([]); //any型
+  const [taskList, setTaskList] = useState<TaskType[]>([]);
   const AlertHandlerContext =
     useAlertHandlerContext() as AlertHandlerContextType;
   const onAddTaskButtonClick = () => {
@@ -26,12 +26,12 @@ const TodoCard = () => {
     setTaskList(taskList.concat(newTask));
   };
 
-  const onTaskComplete = (index: any /*any型*/) => {
+  const onTaskComplete = (index: number) => {
     let newTaskList = taskList.filter((_, idx) => idx != index);
     setTaskList(newTaskList);
   };
 
-  const onTaskNameChange = (value: any, index: any /*any型*/) => {
+  const onTaskNameChange = (value: string, index: number) => {
     let newTaskList = [...taskList];
     if (value === "") {
       newTaskList.splice(index, 1);
@@ -64,7 +64,7 @@ const TodoCard = () => {
           <Task
             key={index}
             onTaskComplete={() => onTaskComplete(index)}
-            onTaskNameChange={value => onTaskNameChange(value, index)}
+            onTaskNameChange={(value) => onTaskNameChange(value, index)}
             taskName={task.name}
             defaultIsEditing={task.initializing}
           />

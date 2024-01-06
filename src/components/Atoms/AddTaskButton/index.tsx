@@ -3,8 +3,10 @@ import styled from "styled-components";
 import COLOR from "../../../variables/color";
 import TEXT from "../../../variables/texts";
 import plus from "../../../assets/svg/plus.svg";
-
-const AddTaskButton = ({ onClick }) => {
+interface AddTaskButtonProps {
+  onClick: () => void;
+}
+const AddTaskButton = ({ onClick }: AddTaskButtonProps) => {
   return (
     <StyledButton onClick={onClick}>
       <img src={plus} />
