@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import check from "../../../assets/svg/check.svg";
 import COLOR from "../../../variables/color";
-
-const Checkbox = ({ onClick }) => {
+interface CheckboxProps {
+  onClick: () => void;
+}
+const Checkbox = ({ onClick }: CheckboxProps) => {
   return (
     <StyledButton onClick={onClick}>
       <img src={check} />
